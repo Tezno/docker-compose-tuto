@@ -1,0 +1,20 @@
+version: "3"
+services:
+  sogilis-app:
+    build: .
+    image: sogilis-app
+    depends_on:
+      - redis
+    ports:
+      - "80:80"
+    networks:
+      - monreseau
+    environment:
+      - NOM=les sogiliciens
+  redis:
+    image: redis
+    networks:
+      - monreseau
+
+networks:
+  monreseau:
